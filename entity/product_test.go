@@ -39,11 +39,11 @@ func TestBrands_ConvertToTable(t *testing.T) {
 		{
 			name: "ok",
 			b:    Brands{{BrandID: 1, BrandName: "Zara"}, {BrandID: 2, BrandName: "H&M"}},
-			want: `---	-------	
-Id 	Ukuran 	
----	-------	
+			want: `---	-----	
+Id	Merk	
+---	-----	
 1	Zara	
-2	H&M		
+2	H&M	
 `,
 		},
 	}
@@ -51,6 +51,58 @@ Id 	Ukuran
 		t.Run(tt.name, func(t *testing.T) {
 			if got := tt.b.ConvertToTable(); got != tt.want {
 				t.Errorf("Brands.ConvertToTable() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestColors_ConvertToTable(t *testing.T) {
+	tests := []struct {
+		name string
+		c    Colors
+		want string
+	}{
+		{
+			name: "ok",
+			c:    Colors{{ColorID: 1, ColorName: "Hitam"}, {ColorID: 2, ColorName: "Putih"}},
+			want: `---	-----	
+Id	Warna	
+---	-----	
+1	Hitam	
+2	Putih	
+`,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := tt.c.ConvertToTable(); got != tt.want {
+				t.Errorf("Colors.ConvertToTable() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestCategories_ConvertToTable(t *testing.T) {
+	tests := []struct {
+		name string
+		c    Categories
+		want string
+	}{
+		{
+			name: "ok",
+			c:    Categories{{CategoryID: 1, CategoryName: "Outerwear"}, {CategoryID: 2, CategoryName: "Innerwear"}},
+			want: `---	--------	
+Id	Kategori	
+---	--------	
+1	Outerwear	
+2	Innerwear	
+`,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := tt.c.ConvertToTable(); got != tt.want {
+				t.Errorf("Categories.ConvertToTable() = %v, want %v", got, tt.want)
 			}
 		})
 	}
