@@ -17,12 +17,6 @@ type OrderDetail struct {
 	TotalPrice   float64
 }
 
-type OrderReport struct {
-	OrderDay      string
-	TotalQuantity int
-	TotalSales    float64
-}
-
 type Stock struct {
 	StockID   int
 	ProductID int

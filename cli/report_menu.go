@@ -3,67 +3,111 @@ package cli
 import (
 	"database/sql"
 	"fmt"
-	"log"
+	"os"
 	"pair-project/entity"
 	"pair-project/handler"
+	"text/tabwriter"
 )
 
 func ReportMenu(db *sql.DB) int {
 	fmt.Println()
 	fmt.Print(entity.ReportMenu)
 	var option int
-	if err := inputScanner(&option, "Pilih menu yang ingin anda akses (1/2/3/4): "); err != nil {
+	if err := inputScanner(&option, "Pilih menu yang ingin anda akses (1-8): "); err != nil {
 		return 0
 	}
 
 	switch option {
 	case 1:
-		topUsers, err := handler.TopPurchasingUsers(db)
+		res, err := handler.OrderOverview(db)
 		if err != nil {
-			log.Fatal(err)
+			fmt.Println(err)
+			fmt.Println("Terjadi kesalahan teknis. Silahkan hubungi administrator")
+			fmt.Println("Kembali ke menu...")
+			return 0
 		}
 
-		for _, user := range topUsers {
-			fmt.Println("\nUser yang melakukan total pembelian terbanyak:")
-			fmt.Printf("UserID: %d - Email: %s - Name: %s %s - Total Purchase: $%.2f\n", user.Id, user.Email, user.FirstName, user.LastName, user.TotalPurchase)
-		}
-
+		w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', tabwriter.AlignRight)
+		table := res.ConvertToTable()
+		fmt.Fprintln(w, table)
+		w.Flush()
 	case 2:
-		orderReports, err := handler.TopSellingDayReport(db)
+		res, err := handler.OrderSummary(db)
 		if err != nil {
-			log.Fatal(err)
+			fmt.Println("Terjadi kesalahan teknis. Silahkan hubungi administrator")
+			fmt.Println("Kembali ke menu...")
+			return 0
 		}
 
-		for _, report := range orderReports {
-			fmt.Println("\nTotal penjualan terbanyak perhari:")
-			fmt.Printf("Order Day: %s\nTotal Quantity: %d\nTotal Sales: %.2f\n\n", report.OrderDay, report.TotalQuantity, report.TotalSales)
-		}
-
+		w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', tabwriter.AlignRight)
+		table := res.ConvertToTable()
+		fmt.Fprintln(w, table)
+		w.Flush()
 	case 3:
-		maxProduct, err := handler.GetMaxStockProduct(db)
+		res, err := handler.SalesSummary(db)
 		if err != nil {
-			log.Fatal(err)
+			fmt.Println("Terjadi kesalahan teknis. Silahkan hubungi administrator")
+			fmt.Println("Kembali ke menu...")
+			return 0
 		}
-		fmt.Println("Produk dengan stok paling banyak:")
-		fmt.Printf("Product ID: %d - Name: %s - Description: %s - Price: %.2f - Brand: %s - Size: %s - Color: %s - Stock: %d\n",
-			maxProduct.ProductID, maxProduct.ProductName, maxProduct.Description,
-			maxProduct.Price, maxProduct.Brand.BrandName, maxProduct.Size.SizeName,
-			maxProduct.Color.ColorName, maxProduct.Stock.Quantity,
-		)
 
-		minProduct, err := handler.GetMinStockProduct(db)
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Println("\nProduk dengan stok paling sedikit:")
-		fmt.Printf("Product ID: %d - Name: %s - Description: %s - Price: %.2f - Brand: %s - Size: %s - Color: %s - Stock: %d\n",
-			minProduct.ProductID, minProduct.ProductName, minProduct.Description,
-			minProduct.Price, minProduct.Brand.BrandName, minProduct.Size.SizeName,
-			minProduct.Color.ColorName, minProduct.Stock.Quantity,
-		)
-
+		w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', tabwriter.AlignRight)
+		table := res.ConvertToTable()
+		fmt.Fprintln(w, table)
+		w.Flush()
 	case 4:
+		res, err := handler.InventorySummary(db)
+		if err != nil {
+			fmt.Println("Terjadi kesalahan teknis. Silahkan hubungi administrator")
+			fmt.Println("Kembali ke menu...")
+			return 0
+		}
+
+		w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', tabwriter.AlignRight)
+		table := res.ConvertToTable()
+		fmt.Fprintln(w, table)
+		w.Flush()
+	case 5:
+		res, err := handler.TopPurchasedProducts(db)
+		if err != nil {
+			fmt.Println(err)
+			fmt.Println("Terjadi kesalahan teknis. Silahkan hubungi administrator")
+			fmt.Println("Kembali ke menu...")
+			return 0
+		}
+
+		w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', tabwriter.AlignRight)
+		table := res.ConvertToTable()
+		fmt.Fprintln(w, table)
+		w.Flush()
+	case 6:
+		res, err := handler.TopPurchasedBrands(db)
+		if err != nil {
+			fmt.Println("Terjadi kesalahan teknis. Silahkan hubungi administrator")
+			fmt.Println("Kembali ke menu...")
+			return 0
+		}
+
+		w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', tabwriter.AlignRight)
+		table := res.ConvertToTable()
+		fmt.Fprintln(w, table)
+		w.Flush()
+	case 7:
+		res, err := handler.TopSpender(db)
+		if err != nil {
+			fmt.Println(err)
+			fmt.Println("Terjadi kesalahan teknis. Silahkan hubungi administrator")
+			fmt.Println("Kembali ke menu...")
+			return 0
+		}
+
+		w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', tabwriter.AlignRight)
+		table := res.ConvertToTable()
+		fmt.Fprintln(w, table)
+		w.Flush()
+	case 8:
 		fmt.Println("Terima kasih telah mengunjungi Cakra Clothing Store. Sampai jumpa!")
+		os.Exit(0)
 		return 2
 	}
 
