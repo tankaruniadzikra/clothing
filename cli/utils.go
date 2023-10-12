@@ -5,15 +5,17 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"text/tabwriter"
 )
 
 // inputScanner reads input from the terminal and stores it in the provided interface.
 // Type exit to break the scanning process
 func inputScanner(input any, text string) error {
 	scanner := bufio.NewScanner(os.Stdin)
+	w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', tabwriter.AlignRight)
 
 	for {
-		fmt.Print(text)
+		fmt.Fprintln(w, text)
 		scanner.Scan()
 		in := scanner.Text()
 		if in == "exit" {
@@ -65,5 +67,6 @@ func inputScanner(input any, text string) error {
 		}
 	}
 
+	w.Flush()
 	return fmt.Errorf("exit trigger")
 }

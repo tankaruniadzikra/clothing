@@ -17,7 +17,7 @@ Menu:
 `
 
 	ProductMenu = `Pilihan pengelolaan product yang tersedia:
-1. Lihat product
+1. Lihat daftar product
 2. Tambahkan product baru
 3. Update product lama
 4. Hapus product
@@ -28,10 +28,13 @@ Menu:
 `
 
 	ReportMenu = `Pilihan report yang tersedia:
-1. ???
-2. ???
-3. ???
-4. ???
-5. Exit
+1. Order overview
+2. Order summary
+3. Sales summary
+4. Inventory summary
+5. Product dengan pembelian terbanyak
+6. User dengan pembelian terbanyak
+7. Brand dengan pembelian terbanyak
+8. Exit
 `
 )

@@ -1,8 +1,6 @@
 package entity
 
-import (
-	"testing"
-)
+import "testing"
 
 func TestSizes_ConvertToTable(t *testing.T) {
 	tests := []struct {
@@ -14,7 +12,7 @@ func TestSizes_ConvertToTable(t *testing.T) {
 			name: "ok",
 			s:    Sizes{{SizeID: 1, SizeName: "Small"}, {SizeID: 2, SizeName: "Medium"}},
 			want: `---	-------	
-Id 	Ukuran 	
+Id	Ukuran	
 ---	-------	
 1	Small	
 2	Medium	
@@ -50,7 +48,7 @@ Id	Merk
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := tt.b.ConvertToTable(); got != tt.want {
-				t.Errorf("Brands.ConvertToTable() = %v, want %v", got, tt.want)
+				t.Errorf("Brands.ConvertToTable() = \n%v, want \n%v", got, tt.want)
 			}
 		})
 	}
@@ -76,7 +74,7 @@ Id	Warna
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := tt.c.ConvertToTable(); got != tt.want {
-				t.Errorf("Colors.ConvertToTable() = %v, want %v", got, tt.want)
+				t.Errorf("Colors.ConvertToTable() = \n%v, want \n%v", got, tt.want)
 			}
 		})
 	}
@@ -102,7 +100,7 @@ Id	Kategori
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := tt.c.ConvertToTable(); got != tt.want {
-				t.Errorf("Categories.ConvertToTable() = %v, want %v", got, tt.want)
+				t.Errorf("Categories.ConvertToTable() = \n%v, want \n%v", got, tt.want)
 			}
 		})
 	}

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"pair-project/cli"
@@ -10,8 +11,11 @@ import (
 func main() {
 	defer fmt.Println("Terima kasih telah mengunjungi Cakra Clothing Store. Sampai jumpa!")
 
+	// get connection string from flag
+	connString := flag.String("db_url", "root:@tcp(localhost:3306)/cakra_clothing", "db connection string")
+
 	// connect and maintain DB connection
-	db, err := config.ConnectDB()
+	db, err := config.ConnectDB(*connString)
 	if err != nil {
 		log.Fatal(err)
 	}
