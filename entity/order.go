@@ -16,3 +16,9 @@ type OrderDetail struct {
 	PricePerUnit float64
 	TotalPrice   float64
 }
+
+type Stock struct {
+	StockID   int
+	ProductID int
+	Quantity  int
+}

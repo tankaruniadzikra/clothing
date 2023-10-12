@@ -14,7 +14,7 @@ SELECT
 	P.SizeID,
 	S.SizeName,
 	P.ColorID,
-	C.ColorName,
+	C.ColorName
 FROM
 	Products P
 LEFT JOIN

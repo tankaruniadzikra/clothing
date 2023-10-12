@@ -61,7 +61,7 @@ CREATE TABLE ProductCategories (
     ProductCategoryID INT PRIMARY KEY AUTO_INCREMENT,
     ProductID INT,
     CategoryID INT,
-    FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID) ON DELETE CASCADE,
     FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 );
 
@@ -70,7 +70,7 @@ CREATE TABLE Stock (
     StockID INT PRIMARY KEY AUTO_INCREMENT,
     ProductID INT,
     Quantity INT NOT NULL,
-    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID) ON DELETE CASCADE
 );
 
 -- Orders Table:
@@ -90,6 +90,6 @@ CREATE TABLE OrderItems (
     Quantity INT NOT NULL,
     PricePerUnit DECIMAL(10, 2) NOT NULL,
     TotalPrice DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
-    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID) ON DELETE CASCADE,
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID) ON DELETE CASCADE
 );
