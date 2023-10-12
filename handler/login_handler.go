@@ -7,17 +7,17 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-func Login(email, password string, db *sql.DB) (entity.User, bool, error) {
-	var user entity.User
+func Login(db *sql.DB, email, password string) (user entity.User, err error) {
 	row := db.QueryRow("SELECT UserID, Email, Password, FirstName, LastName FROM Users WHERE Email = ?", email)
-	err := row.Scan(&user.Id, &user.Email, &user.Password, &user.FirstName, &user.LastName)
+	err = row.Scan(&user.Id, &user.Email, &user.Password, &user.FirstName, &user.LastName)
 	if err != nil {
-		return user, false, err
+		return
 	}
 
 	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password))
 	if err != nil {
-		return user, false, err
+		return
 	}
-	return user, true, nil
+
+	return
 }
