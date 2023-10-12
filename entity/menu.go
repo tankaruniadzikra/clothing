@@ -28,10 +28,9 @@ Menu:
 `
 
 	ReportMenu = `Pilihan report yang tersedia:
-1. ???
-2. ???
-3. ???
-4. ???
-5. Exit
+1. User report
+2. Order report
+3. Stock report
+4. Exit
 `
 )

@@ -16,3 +16,9 @@ type OrderDetail struct {
 	PricePerUnit float64
 	TotalPrice   float64
 }
+
+type OrderReport struct {
+	OrderDay      string
+	TotalQuantity int
+	TotalSales    float64
+}

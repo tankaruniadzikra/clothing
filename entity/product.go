@@ -16,6 +16,10 @@ type Product struct {
 	SizeName    string
 	ColorID     int
 	ColorName   string
+	Brand       Brand
+	Size        Size
+	Color       Color
+	Stock       Stock
 	Categories  []Category
 }
 
