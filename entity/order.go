@@ -22,3 +22,9 @@ type OrderReport struct {
 	TotalQuantity int
 	TotalSales    float64
 }
+
+type Stock struct {
+	StockID   int
+	ProductID int
+	Quantity  int
+}

@@ -38,6 +38,10 @@ func CreateProduct(db *sql.DB, product entity.Product) error {
 		}
 	}
 
+	if err := tx.Commit(); err != nil {
+		return err
+	}
+
 	return nil
 }
 

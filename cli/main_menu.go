@@ -6,6 +6,7 @@ import (
 	"os"
 	"pair-project/entity"
 	"pair-project/handler"
+	"text/tabwriter"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -102,4 +103,24 @@ func registerUser() (user entity.User, err error) {
 	}
 
 	return
+}
+
+func listUserMenu(db *sql.DB) error {
+	users, err := handler.ReadUsers(db)
+	if err != nil {
+		return err
+	}
+
+	w := tabwriter.NewWriter(os.Stdout, 1, 1, 1, ' ', 0)
+	fmt.Fprintln(w, "---\t | ------\t | -----------\t | --------------\t")
+	fmt.Fprintln(w, "Id \t | Email \t | Nama Depan \t | Nama Belakang \t")
+	fmt.Fprintln(w, "---\t | ------\t | -----------\t | --------------\t")
+
+	for i := range users {
+		row := fmt.Sprintf("%v\t | %v\t | %v\t | $%v\t", users[i].Id, users[i].Email, users[i].FirstName, users[i].LastName)
+		fmt.Fprintln(w, row)
+	}
+	w.Flush()
+
+	return nil
 }
