@@ -105,6 +105,7 @@ func registerUser() (user entity.User, err error) {
 	return
 }
 
+// listUserMenu will print out all users in CLI table
 func listUserMenu(db *sql.DB) error {
 	users, err := handler.ReadUsers(db)
 	if err != nil {

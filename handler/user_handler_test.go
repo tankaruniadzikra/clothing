@@ -17,7 +17,6 @@ func TestLoginIntegration(t *testing.T) {
 	defer db.Close()
 
 	// Insert test user data into the database
-	// You can use SQL queries to insert test data.
 
 	// Define a test user
 	email := "testuser@example.com"
@@ -82,9 +81,6 @@ func TestReadUsersIntegration(t *testing.T) {
 		t.Fatalf("Failed to set up the test database: %v", err)
 	}
 	defer db.Close()
-
-	// Insert test user data into the database
-	// You can use SQL queries to insert test data.
 
 	// Call the ReadUsers function with the real database connection
 	users, err := ReadUsers(db)

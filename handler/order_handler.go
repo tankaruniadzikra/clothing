@@ -6,6 +6,7 @@ import (
 	"pair-project/entity"
 )
 
+// CreateOrder will store the given order entity to database. This function is using transactions to ensure no data is lost/orphaned
 func CreateOrder(db *sql.DB, order entity.Order) error {
 	tx, err := db.BeginTx(context.Background(), &sql.TxOptions{})
 	if err != nil {
@@ -51,6 +52,7 @@ func CreateOrder(db *sql.DB, order entity.Order) error {
 	return nil
 }
 
+// ReadStocks will return all product along with its stock
 func ReadStocks(db *sql.DB) (map[int]entity.Stock, error) {
 	rows, err := db.Query(readStocks)
 	if err != nil {

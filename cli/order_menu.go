@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// OrderMenu will prompt the user before they can start creating orders
 func OrderMenu(db *sql.DB) int {
 	fmt.Println()
 	fmt.Print(entity.OrderMenu)
@@ -30,6 +31,7 @@ func OrderMenu(db *sql.DB) int {
 	return 0
 }
 
+// createOrderInput creates order entity from input given via CLI
 func createOrderInput(db *sql.DB) (order entity.Order, err error) {
 	order.TotalAmount, order.Details, err = selectProducts(db)
 	if err != nil {
@@ -52,6 +54,8 @@ func createOrderInput(db *sql.DB) (order entity.Order, err error) {
 	return
 }
 
+// selectProducts will wait for input from the user, and store all selected products for current
+// order that the user is creating
 func selectProducts(db *sql.DB) (float64, []entity.OrderDetail, error) {
 	var totalAmount float64
 	var orderDetails []entity.OrderDetail

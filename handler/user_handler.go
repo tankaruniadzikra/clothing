@@ -7,6 +7,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+// Login checks given username and password and verify whether those combinations are correct. The application will either give or reject access
 func Login(db *sql.DB, email, password string) (user entity.User, err error) {
 	row := db.QueryRow(login, email)
 	err = row.Scan(&user.Id, &user.Email, &user.Password, &user.FirstName, &user.LastName)
@@ -22,6 +23,7 @@ func Login(db *sql.DB, email, password string) (user entity.User, err error) {
 	return
 }
 
+// Register will create new user in the database
 func Register(db *sql.DB, user entity.User) error {
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
 	if err != nil {
@@ -36,6 +38,7 @@ func Register(db *sql.DB, user entity.User) error {
 	return nil
 }
 
+// ReadUsers will return list of available users
 func ReadUsers(db *sql.DB) ([]entity.User, error) {
 	rows, err := db.Query(readUser)
 	if err != nil {

@@ -13,6 +13,7 @@ func main() {
 
 	// get connection string from flag
 	connString := flag.String("db_url", "root:@tcp(localhost:3306)/cakra_clothing", "db connection string")
+	flag.Parse()
 
 	// connect and maintain DB connection
 	db, err := config.ConnectDB(*connString)
