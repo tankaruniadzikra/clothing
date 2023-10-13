@@ -10,11 +10,11 @@ SELECT
 	P.Material,
 	P.Weight,
 	P.BrandID,
-	B.BrandName,
+	COALESCE(B.BrandName, ''),
 	P.SizeID,
-	S.SizeName,
+	COALESCE(S.SizeName, ''),
 	P.ColorID,
-	C.ColorName
+	COALESCE(C.ColorName, '')
 FROM
 	Products P
 LEFT JOIN
