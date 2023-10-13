@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+// OrderOverview will return OrderOverview entity that represents its report
 func OrderOverview(db *sql.DB) (entity.OrderOverviews, error) {
 	rows, err := db.Query(orderOverview)
 	if err != nil {
@@ -33,6 +34,7 @@ func OrderOverview(db *sql.DB) (entity.OrderOverviews, error) {
 	return overview, nil
 }
 
+// OrderSummary will return OrderSummary entity that represents its report
 func OrderSummary(db *sql.DB) (entity.OrderSummaries, error) {
 	rows, err := db.Query(orderSummary)
 	if err != nil {
@@ -60,6 +62,7 @@ func OrderSummary(db *sql.DB) (entity.OrderSummaries, error) {
 	return summary, nil
 }
 
+// SalesSummary will return SalesSummary entity that represents its report
 func SalesSummary(db *sql.DB) (entity.SalesSummaries, error) {
 	rows, err := db.Query(salesSummary)
 	if err != nil {
@@ -87,6 +90,7 @@ func SalesSummary(db *sql.DB) (entity.SalesSummaries, error) {
 	return summary, nil
 }
 
+// InventorySummary will return InventorySummary entity that represents its report
 func InventorySummary(db *sql.DB) (entity.InventorySummaries, error) {
 	rows, err := db.Query(inventorySummary)
 	if err != nil {
@@ -107,6 +111,7 @@ func InventorySummary(db *sql.DB) (entity.InventorySummaries, error) {
 	return summary, nil
 }
 
+// TopPurchasedProducts will return TopPurchasedProducts entity that represents its report
 func TopPurchasedProducts(db *sql.DB) (entity.TopPurchasedProducts, error) {
 	rows, err := db.Query(topPurchasedProducts)
 	if err != nil {
@@ -127,6 +132,7 @@ func TopPurchasedProducts(db *sql.DB) (entity.TopPurchasedProducts, error) {
 	return products, nil
 }
 
+// TopPurchasedBrands will return TopPurchasedBrands entity that represents its report
 func TopPurchasedBrands(db *sql.DB) (entity.TopPurchasedBrands, error) {
 	rows, err := db.Query(topPurchasedBrands)
 	if err != nil {
@@ -147,6 +153,7 @@ func TopPurchasedBrands(db *sql.DB) (entity.TopPurchasedBrands, error) {
 	return brands, nil
 }
 
+// TopSpender will return TopSpender entity that represents its report
 func TopSpender(db *sql.DB) (entity.TopSpenders, error) {
 	rows, err := db.Query(topSpender)
 	if err != nil {

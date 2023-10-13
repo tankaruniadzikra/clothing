@@ -1,48 +1,62 @@
--- Insert sample brands for clothing
-INSERT INTO Brands (BrandID, BrandName, Description)
+INSERT INTO Users (Email, Password, FirstName, LastName)
 VALUES
-    (1, 'Adidas', 'Sportswear and athletic shoes'),
-    (2, 'Zara', 'Fashion and apparel retailer'),
-    (3, 'H&M', 'Global clothing brand');
+('ica', 'ica', 'Nafisa', 'Alfiani'),
+('dzikra', 'dzikra', 'Tan', 'Dzikra');
 
--- Insert sample sizes for clothing
-INSERT INTO Sizes (SizeID, SizeName, Description)
+INSERT INTO Brands (BrandName, Description)
 VALUES
-    (1, 'Small', 'Small size for clothing'),
-    (2, 'Medium', 'Medium size for clothing'),
-    (3, 'Large', 'Large size for clothing');
+('Adidas', 'Brand sepatu dan pakaian olahraga terkemuka'),
+('Nike', 'Brand sepatu dan pakaian atletik terkemuka'),
+('Zara', 'Brand fesyen dengan desain terkini'),
+('H&M', 'Brand pakaian terjangkau dan trendy'),
+('Puma', 'Brand terkenal dengan koleksi sepatu sporty'),
+('Gucci', 'Brand fashion mewah dari Italia');
 
--- Insert sample colors for clothing
-INSERT INTO Colors (ColorID, ColorName)
+INSERT INTO Sizes (SizeName, Description)
 VALUES
-    (1, 'Red'),
-    (2, 'Blue'),
-    (3, 'Black');
+('S', 'Kecil'),
+('M', 'Sedang'),
+('L', 'Besar'),
+('XL', 'Ekstra Besar');
 
--- Insert sample categories for clothing
-INSERT INTO Categories (CategoryID, CategoryName, Description)
+INSERT INTO Colors (ColorName)
 VALUES
-    (1, 'T-Shirts', 'Casual and comfortable'),
-    (2, 'Jeans', 'Denim pants'),
-    (3, 'Dresses', 'Various dress styles');
+('Merah'),
+('Biru'),
+('Hijau'),
+('Hitam'),
+('Putih'),
+('Abu-abu');
 
--- Insert sample clothing products
-INSERT INTO Products (ProductID, ProductName, Description, Price, Material, Weight, BrandID, SizeID, ColorID)
+INSERT INTO Categories (CategoryName, Description)
 VALUES
-    (1, 'Classic T-Shirt', 'A comfortable and classic t-shirt', 20.00, 'Cotton', 0.3, 1, 2, 1),
-    (2, 'Slim Fit Jeans', 'Fitted jeans for a modern look', 45.00, 'Denim', 0.7, 2, 1, 2),
-    (3, 'Floral Sundress', 'A floral summer dress', 35.00, 'Polyester', 0.4, 3, 3, 1);
+('Sepatu', 'Koleksi sepatu terbaru'),
+('Pakaian', 'Koleksi pakaian terkini'),
+('Aksesoris', 'Aksesoris fashion dan perhiasan'),
+('Tas', 'Koleksi tas dari berbagai gaya dan ukuran'),
+('Kacamata', 'Koleksi kacamata matahari dan bacaan'),
+('Perhiasan', 'Perhiasan eksklusif untuk gaya Anda');
 
--- Associate clothing products with categories
-INSERT INTO ProductCategories (ProductCategoryID, ProductID, CategoryID)
+INSERT INTO Products (ProductName, Description, Price, Material, Weight, BrandID, SizeID, ColorID)
 VALUES
-    (1, 1, 1),
-    (2, 2, 2),
-    (3, 3, 3);
+('Sneaker MS92', 'Sepatu keren untuk gaya santai', 79.99, 'Suede', 0.6, 4, 3, 2),
+('Tas Z23', 'Tas mewah dengan desain ikonik', 499.99, 'Kulit', 1.2, 6, 2, 3),
+('Sepatu Olahraga D12', 'Sepatu olahraga unggulan', 99.99, 'Kulit sintetis', 0.75, 1, 2, 1),
+('Kemeja Kasual ST67', 'Kemeja lengan panjang dengan desain modern', 39.99, 'Katun', 0.3, 3, 2, 3),
+('Celana Pendek SH23', 'Celana pendek atletik', 29.99, 'Polyester', 0.2, 2, 1, 2);
 
--- Insert sample stock information for clothing
-INSERT INTO Stock (StockID, ProductID, Quantity)
+INSERT INTO ProductCategories (ProductID, CategoryID)
 VALUES
-    (1, 1, 50),
-    (2, 2, 30),
-    (3, 3, 20);
+(1, 1),
+(2, 4),
+(3, 1),
+(4, 2),
+(5, 2);
+
+INSERT INTO Stock (ProductID, Quantity)
+VALUES
+(1, 50),
+(2, 75),
+(3, 90),
+(4, 25),
+(5, 110);

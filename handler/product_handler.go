@@ -6,6 +6,7 @@ import (
 	"pair-project/entity"
 )
 
+// CreateProduct will store the given product entity to database. This function is using transactions to ensure no data is lost/orphaned
 func CreateProduct(db *sql.DB, product entity.Product) error {
 	tx, err := db.BeginTx(context.Background(), &sql.TxOptions{})
 	if err != nil {
@@ -45,6 +46,7 @@ func CreateProduct(db *sql.DB, product entity.Product) error {
 	return nil
 }
 
+// will return all product from database
 func ReadProducts(db *sql.DB) ([]entity.Product, error) {
 	rows, err := db.Query(readProducts)
 	if err != nil {
@@ -77,16 +79,19 @@ func ReadProducts(db *sql.DB) ([]entity.Product, error) {
 	return products, nil
 }
 
+// UpdateProduct will update given product entity to existing product row in database
 func UpdateProduct(db *sql.DB, product entity.Product) error {
 	_, err := db.Exec(updateProduct, product.ProductName, product.Description, product.Price, product.Material, product.Weight, product.BrandID, product.SizeID, product.ColorID, product.ProductID)
 	return err
 }
 
+// DeleteProduct will delete given product id from database
 func DeleteProduct(db *sql.DB, productID int) error {
 	_, err := db.Exec(deleteProduct, productID)
 	return err
 }
 
+// ReadSizes will return all sizes from database
 func ReadSizes(db *sql.DB) (entity.Sizes, error) {
 	rows, err := db.Query(readSizes)
 	if err != nil {
@@ -106,6 +111,7 @@ func ReadSizes(db *sql.DB) (entity.Sizes, error) {
 	return sizes, nil
 }
 
+// ReadBrands will return all brands from database
 func ReadBrands(db *sql.DB) (entity.Brands, error) {
 	rows, err := db.Query(readBrands)
 	if err != nil {
@@ -125,6 +131,7 @@ func ReadBrands(db *sql.DB) (entity.Brands, error) {
 	return brands, nil
 }
 
+// ReadColors will return all colors from database
 func ReadColors(db *sql.DB) (entity.Colors, error) {
 	rows, err := db.Query(readColors)
 	if err != nil {
@@ -144,6 +151,7 @@ func ReadColors(db *sql.DB) (entity.Colors, error) {
 	return colors, nil
 }
 
+// ReadCategories will return all categories from database
 func ReadCategories(db *sql.DB) (entity.Categories, error) {
 	rows, err := db.Query(readCategories)
 	if err != nil {

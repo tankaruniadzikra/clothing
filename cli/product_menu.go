@@ -11,6 +11,7 @@ import (
 	"text/tabwriter"
 )
 
+// ProductMenu will prompt the user to select CRUD product
 func ProductMenu(db *sql.DB) int {
 	fmt.Println()
 	fmt.Print(entity.ProductMenu)
@@ -81,6 +82,7 @@ func ProductMenu(db *sql.DB) int {
 	return 0
 }
 
+// createProductInput will receive input from CLI and turns them to product entity
 func createProductInput(db *sql.DB) (product entity.Product, err error) {
 	err = inputScanner(&product.ProductName, "Masukkan nama product: ")
 	if err != nil {
@@ -167,6 +169,7 @@ func createProductInput(db *sql.DB) (product entity.Product, err error) {
 	return
 }
 
+// updateProductInput will receive input from CLI and turns them to product entity
 func updateProductInput(db *sql.DB) (product entity.Product, err error) {
 	err = inputScanner(&product.ProductID, "Masukkan id product yang ingin diperbarui: ")
 	if err != nil {
@@ -234,6 +237,7 @@ func updateProductInput(db *sql.DB) (product entity.Product, err error) {
 	return
 }
 
+// deleteProductInput will receive input from CLI and turns them to product id
 func deleteProductInput() (productId int, err error) {
 	err = inputScanner(&productId, "Masukkan id product: ")
 	if err != nil {
@@ -243,6 +247,7 @@ func deleteProductInput() (productId int, err error) {
 	return
 }
 
+// listProductMenu will prints all available products in CLI table
 func listProductMenu(db *sql.DB) (map[int]entity.Product, error) {
 	products, err := handler.ReadProducts(db)
 	if err != nil {

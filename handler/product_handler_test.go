@@ -21,7 +21,7 @@ func TestCreateProductIntegration(t *testing.T) {
 
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0;")
 
-	// Clean up the database (if needed)
+	// Clean up the database
 	_, err = db.Exec("TRUNCATE TABLE Products")
 	if err != nil {
 		t.Fatalf("Failed to truncate Products table: %v", err)
@@ -54,7 +54,7 @@ func TestCreateProductIntegration(t *testing.T) {
 
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0;")
 
-	// Clean up the database (if needed)
+	// Clean up the database
 	_, err = db.Exec("TRUNCATE TABLE Products")
 	if err != nil {
 		t.Fatalf("Failed to truncate Products table: %v", err)
@@ -71,7 +71,7 @@ func TestReadProductsIntegration(t *testing.T) {
 
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0;")
 
-	// Clean up the database (if needed)
+	// Clean up the database
 	_, err = db.Exec("TRUNCATE TABLE Products")
 	if err != nil {
 		t.Fatalf("Failed to truncate Products table: %v", err)
@@ -97,7 +97,7 @@ func TestReadProductsIntegration(t *testing.T) {
 
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0;")
 
-	// Clean up the database (if needed)
+	// Clean up the database
 	_, err = db.Exec("TRUNCATE TABLE Products")
 	if err != nil {
 		t.Fatalf("Failed to truncate Products table: %v", err)
@@ -114,7 +114,7 @@ func TestUpdateProductIntegration(t *testing.T) {
 
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0;")
 
-	// Clean up the database (if needed)
+	// Clean up the database
 	_, err = db.Exec("TRUNCATE TABLE Products")
 	if err != nil {
 		t.Fatalf("Failed to truncate Products table: %v", err)
@@ -158,7 +158,7 @@ func TestUpdateProductIntegration(t *testing.T) {
 
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0;")
 
-	// Clean up the database (if needed)
+	// Clean up the database
 	_, err = db.Exec("TRUNCATE TABLE Products")
 	if err != nil {
 		t.Fatalf("Failed to truncate Products table: %v", err)
@@ -175,7 +175,7 @@ func TestDeleteProductIntegration(t *testing.T) {
 
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0;")
 
-	// Clean up the database (if needed)
+	// Clean up the database
 	_, err = db.Exec("TRUNCATE TABLE Products")
 	if err != nil {
 		t.Fatalf("Failed to truncate Products table: %v", err)
@@ -206,7 +206,7 @@ func TestDeleteProductIntegration(t *testing.T) {
 
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0;")
 
-	// Clean up the database (if needed)
+	// Clean up the database
 	_, err = db.Exec("TRUNCATE TABLE Products")
 	if err != nil {
 		t.Fatalf("Failed to truncate Products table: %v", err)
@@ -223,7 +223,7 @@ func TestReadSizesIntegration(t *testing.T) {
 
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0;")
 
-	// Clean up the database (if needed)
+	// Clean up the database
 	_, err = db.Exec("TRUNCATE TABLE Sizes")
 	if err != nil {
 		t.Fatalf("Failed to truncate Sizes table: %v", err)
@@ -249,7 +249,7 @@ func TestReadSizesIntegration(t *testing.T) {
 
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0;")
 
-	// Clean up the database (if needed)
+	// Clean up the database
 	_, err = db.Exec("TRUNCATE TABLE Sizes")
 	if err != nil {
 		t.Fatalf("Failed to truncate Sizes table: %v", err)
@@ -266,7 +266,7 @@ func TestReadBrandsIntegration(t *testing.T) {
 
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0;")
 
-	// Clean up the database (if needed)
+	// Clean up the database
 	_, err = db.Exec("TRUNCATE TABLE Brands")
 	if err != nil {
 		t.Fatalf("Failed to truncate Brands table: %v", err)
@@ -292,7 +292,7 @@ func TestReadBrandsIntegration(t *testing.T) {
 
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0;")
 
-	// Clean up the database (if needed)
+	// Clean up the database
 	_, err = db.Exec("TRUNCATE TABLE Brands")
 	if err != nil {
 		t.Fatalf("Failed to truncate Brands table: %v", err)
@@ -309,7 +309,7 @@ func TestReadColorsIntegration(t *testing.T) {
 
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0;")
 
-	// Clean up the database (if needed)
+	// Clean up the database
 	_, err = db.Exec("TRUNCATE TABLE Colors")
 	if err != nil {
 		t.Fatalf("Failed to truncate Colors table: %v", err)
@@ -335,7 +335,7 @@ func TestReadColorsIntegration(t *testing.T) {
 
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0;")
 
-	// Clean up the database (if needed)
+	// Clean up the database
 	_, err = db.Exec("TRUNCATE TABLE Colors")
 	if err != nil {
 		t.Fatalf("Failed to truncate Colors table: %v", err)
@@ -352,7 +352,7 @@ func TestReadCategoriesIntegration(t *testing.T) {
 
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0;")
 
-	// Clean up the database (if needed)
+	// Clean up the database
 	_, err = db.Exec("TRUNCATE TABLE Categories")
 	if err != nil {
 		t.Fatalf("Failed to truncate Categories table: %v", err)
@@ -378,7 +378,7 @@ func TestReadCategoriesIntegration(t *testing.T) {
 
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0;")
 
-	// Clean up the database (if needed)
+	// Clean up the database
 	_, err = db.Exec("TRUNCATE TABLE Categories")
 	if err != nil {
 		t.Fatalf("Failed to truncate Categories table: %v", err)

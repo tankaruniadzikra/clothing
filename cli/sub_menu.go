@@ -7,6 +7,7 @@ import (
 	"pair-project/entity"
 )
 
+// SubMenu will wait user input after they are logged in. The prompt will then take the user to their selected menu
 func SubMenu(db *sql.DB) int {
 	fmt.Println()
 	fmt.Print(entity.SubMenu)

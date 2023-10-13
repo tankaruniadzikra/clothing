@@ -9,6 +9,7 @@ import (
 	"text/tabwriter"
 )
 
+// ReportMenu will prompt the user before they can access report menu
 func ReportMenu(db *sql.DB) int {
 	fmt.Println()
 	fmt.Print(entity.ReportMenu)
