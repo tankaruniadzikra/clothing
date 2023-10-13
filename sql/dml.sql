@@ -1,14 +1,14 @@
 INSERT INTO Users (Email, Password, FirstName, LastName)
 VALUES
 ('ica', 'ica', 'Nafisa', 'Alfiani'),
-('dzikra', 'dzikra', 'Tan', 'Dzikra'),
+('dzikra', 'dzikra', 'Tan', 'Dzikra');
 
 INSERT INTO Brands (BrandName, Description)
 VALUES
 ('Adidas', 'Brand sepatu dan pakaian olahraga terkemuka'),
 ('Nike', 'Brand sepatu dan pakaian atletik terkemuka'),
 ('Zara', 'Brand fesyen dengan desain terkini'),
-('H&M', 'Brand pakaian terjangkau dan trendy');
+('H&M', 'Brand pakaian terjangkau dan trendy'),
 ('Puma', 'Brand terkenal dengan koleksi sepatu sporty'),
 ('Gucci', 'Brand fashion mewah dari Italia');
 
@@ -24,10 +24,9 @@ VALUES
 ('Merah'),
 ('Biru'),
 ('Hijau'),
-('Kuning'),
 ('Hitam'),
 ('Putih'),
-('Abu-abu'),
+('Abu-abu');
 
 INSERT INTO Categories (CategoryName, Description)
 VALUES
